@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import Axios from "axios";
 
-import openTrivia from "../../api/openTrivia";
+import {loadQuestions} from '../../helpers/QuestionsHelper'
 import Question from "./Question";
+
 
 
 const Game = () => {
@@ -12,26 +14,8 @@ const Game = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await openTrivia.get();
-        const { results } = data;
-
-        const questions = results.map((loadedQues) => {
-          const formattedQues = {
-            question: loadedQues.question,
-            choices: [...loadedQues.incorrect_answers],
-            answer: loadedQues.correct_answer,
-          };
-
-          formattedQues.answer = Math.floor(Math.random() * 4); // random positon from 0 -3 to put correct ans
-
-          formattedQues.choices.splice(
-            formattedQues.answer,
-            0,
-            loadedQues.correct_answer
-          );
-          return formattedQues;
-        });
-
+        const questions = await loadQuestions()
+        console.log(questions)
         setQuestions(questions);
         setCurrentQues(questions[0]);
       } catch (err) {
@@ -45,7 +29,7 @@ const Game = () => {
 
   return (
     <>
-      <Question questions={currentQues} />
+      <Question questions={currentQues} />}{" "}
     </>
   );
 };
