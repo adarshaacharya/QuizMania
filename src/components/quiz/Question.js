@@ -8,6 +8,7 @@ import {
 } from "./Question.style";
 
 const Question = ({ questions }) => {
+
   return (
     <>
       <h2>{questions.question}</h2>
