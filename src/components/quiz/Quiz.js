@@ -10,6 +10,7 @@ class Quiz extends React.Component {
     questions: [],
     currentQuestion: null,
     loading: true,
+    score: 0,
   };
 
   async componentDidMount() {
@@ -21,8 +22,7 @@ class Quiz extends React.Component {
     }
   }
 
-  // change next ques
-  changeQuestion = () => {
+  changeQuestion = (bonus = 0) => {
     // get rand index of ques
     const randomQuestionIndex = Math.floor(
       Math.random() * this.state.questions.length
@@ -31,15 +31,17 @@ class Quiz extends React.Component {
     // set current ques of that index
     const currentQuestion = this.state.questions[randomQuestionIndex];
 
-    const remainingQuestion = [...this.state.questions]; // clone of ques
-    remainingQuestion.splice(randomQuestionIndex, 1); // remove rand ques
+    const remainingQuestions = [...this.state.questions]; // clone of ques
+    remainingQuestions.splice(randomQuestionIndex, 1); // remove rand ques
 
     // update state
-    this.setState({
-      questions: remainingQuestion,
-      currentQuestion: currentQuestion,
+    this.setState((prevState) => ({
+      questions: remainingQuestions,
+      currentQuestion,
       loading: false,
-    });
+      score: (prevState.score + bonus),
+    }));
+    console.log(this.state.score);
   };
 
   render() {

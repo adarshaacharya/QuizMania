@@ -17,16 +17,16 @@ const Question = ({ currentQuestion, changeQuestion }) => {
     setAnswering(true);
     setSelectedAnswer(selectedAnswer);
 
-    const color =
+    const colorToApply =
       selectedAnswer === currentQuestion.answer ? "correct" : "incorrect";
-    setDisplay(color);
+    setDisplay(colorToApply);
     const bonus = selectedAnswer === currentQuestion.answer ? 10 : 0;
 
     // after ans ques
     setTimeout(() => {
       setSelectedAnswer(-1);
       setAnswering(false);
-      changeQuestion();
+      changeQuestion(bonus);
     }, 1000);
   };
 
@@ -38,7 +38,7 @@ const Question = ({ currentQuestion, changeQuestion }) => {
         {currentQuestion.choices.map((choice, index) => (
           <ChoiceContainer
             key={index}
-            color={selectedAnswer === index && display}
+            color={selectedAnswer === index ? display : undefined}
             onClick={() => checkAnswer(index)}
           >
             <ChoicePrefix>{index + 1}</ChoicePrefix>
