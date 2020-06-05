@@ -6,7 +6,7 @@ import { Container } from "../@quiz-ui";
 import Home from "./pages/Home";
 import NotFound from "./pages/404";
 
-import Game from "./quiz/Game";
+import Quiz from "./quiz/Quiz";
 import HighScores from "./quiz/HighScores";
 
 import { Route, BrowserRouter, Switch } from "react-router-dom";
@@ -17,12 +17,12 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/game" component={Game} />
+          <Route path="/quiz" component={Quiz} />
           <Route path="/high-scores" component={HighScores} />
           <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>
-      <GlobalStyles />
+        <GlobalStyles />
     </Container>
   );
 }

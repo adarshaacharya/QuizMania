@@ -10,22 +10,22 @@ export const loadQuestions = async () => {
   }
 };
 
-const convertQuestionsFromAPI = (rawQues) => {
-  const questions = rawQues.map((loadedQues) => {
-    const formattedQues = {
-      question: loadedQues.question,
-      choices: [...loadedQues.incorrect_answers],
-      answer: loadedQues.correct_answer,
+const convertQuestionsFromAPI = (rawQuestion) => {
+  const questions = rawQuestion.map((loadedQuestion) => {
+    const formattedQuestion = {
+      question: loadedQuestion.question,
+      choices: [...loadedQuestion.incorrect_answers],
+      answer: loadedQuestion.correct_answer,
     };
 
-    formattedQues.answer = Math.floor(Math.random() * 4); // random positon from 0 -3 to put correct ans
+    formattedQuestion.answer = Math.floor(Math.random() * 4); // random positon from 0 -3 to put correct ans
 
-    formattedQues.choices.splice(
-      formattedQues.answer,
+    formattedQuestion.choices.splice(
+      formattedQuestion.answer,
       0,
-      loadedQues.correct_answer
+      loadedQuestion.correct_answer
     );
-    return formattedQues;
+    return formattedQuestion;
   });
 
   return questions;

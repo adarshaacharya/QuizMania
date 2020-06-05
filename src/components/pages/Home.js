@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <h1>Quiz App</h1>
-        <LinkButton to="/game">Start Game</LinkButton>
+        <LinkButton to="/quiz">Start Game</LinkButton>
         <LinkButton to="/high-scores">High Scores</LinkButton>
     </>
   );

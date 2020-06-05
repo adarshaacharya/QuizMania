@@ -4,6 +4,9 @@ const GlobalStyles = createGlobalStyle`
     :root {
         --primary-color : #F5A6C4;
         --dark-color : #282C35;
+        --danger-color : #FF4500;
+        --success-color : #28a745;
+        --light-color : #fafafa;
         font-size: 62.5%;
     }
 
