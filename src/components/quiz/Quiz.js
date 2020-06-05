@@ -4,13 +4,14 @@ import { Spinner } from "../../@quiz-ui/Spinner";
 
 import { loadQuestions } from "../../helpers/QuestionsHelper";
 import Question from "./Question";
-
+import HeadUpDisplay from './HeadUpDisplay'
 class Quiz extends React.Component {
   state = {
     questions: [],
     currentQuestion: null,
     loading: true,
     score: 0,
+    questionNumber: 0,
   };
 
   async componentDidMount() {
@@ -39,7 +40,8 @@ class Quiz extends React.Component {
       questions: remainingQuestions,
       currentQuestion,
       loading: false,
-      score: (prevState.score + bonus),
+      score: prevState.score + bonus,
+      questionNumber: prevState.questionNumber + 1,
     }));
     console.log(this.state.score);
   };
@@ -49,6 +51,7 @@ class Quiz extends React.Component {
 
     return (
       <>
+        <HeadUpDisplay score={this.state.score} questionNumber={this.state.questionNumber} />
         <Question
           currentQuestion={this.state.currentQuestion}
           changeQuestion={this.changeQuestion}

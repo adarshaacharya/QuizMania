@@ -4,9 +4,12 @@ const GlobalStyles = createGlobalStyle`
     :root {
         --primary-color : #F5A6C4;
         --dark-color : #282C35;
-        --danger-color : #FF4500;
+        --danger-color : HSL(356, 100%, 50%);
         --success-color : #28a745;
         --light-color : #fafafa;
+        --grey-color : #232323;
+        --yellow-color : #FEC735;
+
         font-size: 62.5%;
     }
 
@@ -37,6 +40,9 @@ const GlobalStyles = createGlobalStyle`
     h1 {
         font-size: 5.4rem;
         margin-bottom: 5rem;
+        text-align : center;
+        text-shadow: 4px 4px var(--grey-color);
+
     }
 
 

@@ -6,11 +6,10 @@ export const Button = styled.button`
   padding: 1rem 0;
   width: 20rem;
   text-align: center;
-  border: 0.1rem solid #56a5eb;
+  border: 0.1rem solid var(--primary-color);
   margin-bottom: 1rem;
   text-decoration: none;
-  color: #56a5eb;
-  background-color: white;
+  color: var(--primary-color);
 
   &:hover {
     cursor: pointer;

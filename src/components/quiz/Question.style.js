@@ -48,10 +48,6 @@ export const ChoicePrefix = styled.p`
 export const ChoiceText = styled.p`
   padding: 1.5rem;
   width: 100%;
-  text-align: center;
+  text-align: left;
 `;
 
-// export const StyledAnswer = styled.div`
-
-// background-color : ${props => props.correct ? "#28a745" : props.incorrect ?  #dc3545 : "#fafafa"}
-// `
