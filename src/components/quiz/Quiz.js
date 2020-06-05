@@ -4,7 +4,7 @@ import { Spinner } from "../../@quiz-ui/Spinner";
 
 import { loadQuestions } from "../../helpers/QuestionsHelper";
 import Question from "./Question";
-import HeadUpDisplay from './HeadUpDisplay'
+import HeadUpDisplay from "./HeadUpDisplay";
 class Quiz extends React.Component {
   state = {
     questions: [],
@@ -12,6 +12,7 @@ class Quiz extends React.Component {
     loading: true,
     score: 0,
     questionNumber: 0,
+    finished: false,
   };
 
   async componentDidMount() {
@@ -24,6 +25,10 @@ class Quiz extends React.Component {
   }
 
   changeQuestion = (bonus = 0) => {
+    if (this.state.questions.length === 0) {
+      return this.setState({ finished: true });
+    }
+
     // get rand index of ques
     const randomQuestionIndex = Math.floor(
       Math.random() * this.state.questions.length
@@ -43,15 +48,18 @@ class Quiz extends React.Component {
       score: prevState.score + bonus,
       questionNumber: prevState.questionNumber + 1,
     }));
-    console.log(this.state.score);
   };
 
   render() {
     if (this.state.loading) return <Spinner />;
 
+    if (this.state.finished) return <h1>DONE SEXY BOII!! 💯🔥</h1>;
     return (
       <>
-        <HeadUpDisplay score={this.state.score} questionNumber={this.state.questionNumber} />
+        <HeadUpDisplay
+          score={this.state.score}
+          questionNumber={this.state.questionNumber}
+        />
         <Question
           currentQuestion={this.state.currentQuestion}
           changeQuestion={this.changeQuestion}
