@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 
-import { Spinner } from "../../@quiz-ui";
+import { Spinner, QuizContainer } from "../../@quiz-ui";
 
 import { loadQuestions } from "../../utils/QuestionsHelper";
 
@@ -74,13 +74,13 @@ const Quiz = ({ history }) => {
   if (finished) return <SaveScoreForm score={score} scoreSaved={scoreSaved} />;
 
   return (
-    <>
+    <QuizContainer>
       <HeadUpDisplay score={score} questionNumber={questionNumber} />
       <Question
         currentQuestion={currentQuestion}
         changeQuestion={changeQuestion}
       />{" "}
-    </>
+    </QuizContainer>
   );
 };
 

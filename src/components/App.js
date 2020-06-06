@@ -1,7 +1,6 @@
 import React from "react";
 
 import GlobalStyles from "../styles/GlobalStyles";
-import { Container } from "../@quiz-ui";
 
 import Home from "./pages/Home";
 import NotFound from "./pages/404";
@@ -13,7 +12,7 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <Container>
+    <>
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
@@ -23,7 +22,7 @@ function App() {
         </Switch>
       </BrowserRouter>
       <GlobalStyles />
-    </Container>
+    </>
   );
 }
 

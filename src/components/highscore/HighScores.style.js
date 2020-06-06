@@ -2,9 +2,7 @@ import styled from "styled-components";
 import { Container } from "../../@quiz-ui";
 
 export const HighScoreContainer = styled(Container)`
-  max-height: 100%;
-  max-width: 90rem;
-  margin: 70px auto;
+
 `;
 
 export const TableContainer = styled.table`

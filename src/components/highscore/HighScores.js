@@ -37,12 +37,12 @@ const HighScores = () => {
   if (loading) return <Spinner />;
 
   return (
-    <>
+    <HighScoreContainer>
       <h1>High Scores</h1>
       <TableContainer>
         <HighScoreList scores={scores} />
       </TableContainer>
-    </>
+    </HighScoreContainer>
   );
 };
 
