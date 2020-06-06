@@ -3,10 +3,13 @@ import styled from "styled-components";
 
 import { Button, LinkButton, Container } from "../../@quiz-ui";
 import useInput from "../hooks/useInput";
+import { useFirebase } from "../firebase/FirebaseContext";
 
 const SaveScoreForm = ({ score }) => {
   const [userName, setUserName] = useInput();
+  const firebase = useFirebase()
 
+  console.log(firebase)
   const saveHighScore = (e) => {
     e.preventDefault();
     const record = {
