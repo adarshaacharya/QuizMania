@@ -18,6 +18,7 @@ export const Button = styled.button`
 
   &:hover {
     cursor: pointer;
+    background : #50597b;
   }
 
   &[disabled]:hover {

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useFirebase } from "../firebase/FirebaseContext";
-import  { Spinner} from '../../@quiz-ui'
+import { Spinner } from "../../@quiz-ui";
 
+import HighScoreList from "./HighScoreList";
+import { TableContainer, HighScoreContainer } from "./HighScores.style";
 
 const HighScores = () => {
   const firebase = useFirebase();
@@ -37,13 +39,9 @@ const HighScores = () => {
   return (
     <>
       <h1>High Scores</h1>
-      <div id="highestScorerList">
-        {scores.map((record) => (
-          <li key={record.key} className="high-score">
-            {record.name} - {record.score}
-          </li>
-        ))}
-      </div>
+      <TableContainer>
+        <HighScoreList scores={scores} />
+      </TableContainer>
     </>
   );
 };

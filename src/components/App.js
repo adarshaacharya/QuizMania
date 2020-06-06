@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/404";
 
 import Quiz from "./quiz/Quiz";
-import HighScores from "./quiz/HighScores";
+import HighScores from "./highscore/HighScores";
 
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 
@@ -22,7 +22,7 @@ function App() {
           <Route path="*" component={NotFound} />
         </Switch>
       </BrowserRouter>
-        <GlobalStyles />
+      <GlobalStyles />
     </Container>
   );
 }

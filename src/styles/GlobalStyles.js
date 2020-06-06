@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
         --light-color : #fafafa;
         --grey-color :  hsl(0, 3%, 13%);
         --yellow-color : #FEC735;
+        --table-border-color : #c1c3d1;
 
         font-size: 62.5%;
     }

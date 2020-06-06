@@ -2,11 +2,11 @@ import React, { useEffect, useState, useCallback } from "react";
 
 import { Spinner } from "../../@quiz-ui";
 
-import { loadQuestions } from "../../helpers/QuestionsHelper";
+import { loadQuestions } from "../../utils/QuestionsHelper";
 
-import Question from "./Question";
-import HeadUpDisplay from "./HeadUpDisplay";
-import SaveScoreForm from "./SaveScoreForm";
+import Question from "./questions/Question";
+import HeadUpDisplay from "./hud/HeadUpDisplay";
+import SaveScoreForm from "./save-score-form/SaveScoreForm";
 
 const Quiz = ({ history }) => {
   const [questions, setQuestions] = useState([]);

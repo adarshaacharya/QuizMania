@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Button, Container } from "../../@quiz-ui";
-import useInput from "../hooks/useInput";
-import { useFirebase } from "../firebase/FirebaseContext";
+import { Button, Container } from "../../../@quiz-ui";
+import useInput from "../../hooks/useInput";
+import { useFirebase } from "../../firebase/FirebaseContext";
 
 const SaveScoreForm = ({ score, scoreSaved }) => {
   const [userName, setUserName] = useInput();

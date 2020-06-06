@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const ProgressBar = ({ max, current }) => {
   const width = (current / max) * 100;
-    console.log(width)
   return (
     <>
       <StyledProgressBar>
