@@ -5,6 +5,7 @@ import {
   ChoiceContainer,
   ChoicePrefix,
   ChoiceText,
+  StyledCurrentQues
 } from "./Question.style";
 
 const Question = ({ currentQuestion, changeQuestion }) => {
@@ -32,8 +33,7 @@ const Question = ({ currentQuestion, changeQuestion }) => {
 
   return (
     <>
-      <h2 dangerouslySetInnerHTML={{ __html: currentQuestion.question }}></h2>
-
+      <StyledCurrentQues dangerouslySetInnerHTML={{ __html: currentQuestion.question }}></StyledCurrentQues>
       <Choices>
         {currentQuestion.choices.map((choice, index) => (
           <ChoiceContainer

@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+
+export const StyledCurrentQues = styled.h2`
+  @media screen and (max-width : 500px) {
+      font-size : 2rem;
+      font-weight : 600;
+      line-height : 2;
+  }
+`
+
+
 export const Choices = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);

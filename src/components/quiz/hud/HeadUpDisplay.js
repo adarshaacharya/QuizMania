@@ -12,7 +12,7 @@ const HeadUpDisplay = ({ score, questionNumber }) => {
       </HUDItem>
 
       <HUDItem>
-        <HUDPrefix>Score 🚀</HUDPrefix>
+        <HUDPrefix>Score </HUDPrefix>
         <h4 className="hud-score">{score}</h4>
       </HUDItem>
     </HUD>
@@ -26,6 +26,11 @@ const HUD = styled.div`
   padding: 2rem;
   border: 1px solid var(--primary-color);
   border-radius: 6px;
+  @media screen and (max-width: 500px) {
+    margin-bottom : 2rem;
+    font-size : 1rem;
+    padding : 1rem 2rem;
+  }
 `;
 
 const HUDItem = styled.div`
@@ -37,9 +42,9 @@ const HUDItem = styled.div`
     color: var(--light-color);
     text-shadow: 4px 4px var(--grey-color);
     @media screen and (max-width: 500px) {
-      font-weight : 800;
-      font-size : 3rem;
-  }
+      font-weight: 800;
+      font-size: 3rem;
+    }
   }
 `;
 
