@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Spinner } from "../../@quiz-ui/Spinner";
+import { Spinner } from "../../@quiz-ui";
 
 import { loadQuestions } from "../../helpers/QuestionsHelper";
 
@@ -29,6 +29,10 @@ class Quiz extends React.Component {
       console.error(err);
     }
   }
+
+  scoreSaved = () => {
+    this.props.history.push("/");
+  };
 
   changeQuestion = (bonus = 0) => {
     if (this.state.questions.length === 0) {
@@ -70,7 +74,7 @@ class Quiz extends React.Component {
 
     if (loading) return <Spinner />;
 
-    if (finished) return <SaveScoreForm score={score} />;
+    if (finished) return <SaveScoreForm score={score} scoreSaved={this.scoreSaved}/>;
 
     return (
       <>

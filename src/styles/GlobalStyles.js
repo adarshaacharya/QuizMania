@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
         --danger-color : HSL(356, 100%, 50%);
         --success-color : #28a745;
         --light-color : #fafafa;
-        --grey-color : #232323;
+        --grey-color :  hsl(0, 3%, 13%);
         --yellow-color : #FEC735;
 
         font-size: 62.5%;

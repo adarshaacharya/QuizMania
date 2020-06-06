@@ -16,9 +16,7 @@ class Firebase {
     this.db = app.database();
   }
 
-  scores = () => {
-    this.db.ref("scores");
-  };
+  scores = () => this.db.ref("scores"); // scores is collection i.e table
 }
 
-export default Firebase
+export default Firebase;
