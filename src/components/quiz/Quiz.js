@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import { Spinner } from "../../@quiz-ui";
 
@@ -8,84 +8,80 @@ import Question from "./Question";
 import HeadUpDisplay from "./HeadUpDisplay";
 import SaveScoreForm from "./SaveScoreForm";
 
-class Quiz extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      questions: [],
-      currentQuestion: null,
-      loading: true,
-      score: 0,
-      questionNumber: 0,
-      finished: false,
-    };
-  }
+const Quiz = ({ history }) => {
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [score, setScore] = useState(0);
+  const [questionNumber, setQuestionNumber] = useState(0);
+  const [finished, setFinished] = useState(false);
 
-  async componentDidMount() {
-    try {
-      const questions = await loadQuestions();
-      this.setState({ questions }, () => this.changeQuestion());
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  useEffect(() => {
+    loadQuestions()
+      .then((questions) => setQuestions(questions))
+      .catch((err) => console.error(err));
 
-  scoreSaved = () => {
-    this.props.history.push("/");
+    //eslint-disable-next-line
+  }, []);
+
+  const scoreSaved = () => {
+    history.push("/");
   };
 
-  changeQuestion = (bonus = 0) => {
-    if (this.state.questions.length === 0) {
-      return this.setState((prevState) => ({
-        finished: true,
-        score: prevState.score + bonus,
-      }));
-    }
+  const changeQuestion = useCallback(
+    (bonus = 0) => {
+      // check last ques
+      if (questions.length === 0) {
+        setFinished(true);
+        return setScore(score + bonus);
+      }
 
-    // get rand index of ques
-    const randomQuestionIndex = Math.floor(
-      Math.random() * this.state.questions.length
-    );
+      // get rand index of ques
+      const randomQuestionIndex = Math.floor(Math.random() * questions.length);
 
-    // set current ques of that index
-    const currentQuestion = this.state.questions[randomQuestionIndex];
+      // set current ques of that index
+      const currentQuestion = questions[randomQuestionIndex];
 
-    const remainingQuestions = [...this.state.questions]; // clone of ques
-    remainingQuestions.splice(randomQuestionIndex, 1); // remove rand ques
+      const remainingQuestions = [...questions]; // clone of ques
+      remainingQuestions.splice(randomQuestionIndex, 1); // remove rand ques
 
-    // update state
-    this.setState((prevState) => ({
-      questions: remainingQuestions,
-      currentQuestion,
-      loading: false,
-      score: prevState.score + bonus,
-      questionNumber: prevState.questionNumber + 1,
-    }));
-  };
-
-  render() {
-    const {
-      loading,
-      finished,
+      // update state
+      setQuestions(remainingQuestions);
+      setCurrentQuestion(currentQuestion);
+      setLoading(false);
+      setScore(score + bonus);
+      setQuestionNumber(questionNumber + 1);
+    },
+    [
       score,
-      currentQuestion,
       questionNumber,
-    } = this.state;
+      questions,
+      setQuestions,
+      setLoading,
+      setCurrentQuestion,
+      setQuestionNumber,
+    ]
+  );
 
-    if (loading) return <Spinner />;
+  useEffect(() => {
+    if (!currentQuestion && questions.length) {
+      changeQuestion();
+    }
+  }, [currentQuestion, questions, changeQuestion]);
 
-    if (finished) return <SaveScoreForm score={score} scoreSaved={this.scoreSaved}/>;
+  if (loading) return <Spinner />;
 
-    return (
-      <>
-        <HeadUpDisplay score={score} questionNumber={questionNumber} />
-        <Question
-          currentQuestion={currentQuestion}
-          changeQuestion={this.changeQuestion}
-        />{" "}
-      </>
-    );
-  }
-}
+  if (finished) return <SaveScoreForm score={score} scoreSaved={scoreSaved} />;
+
+  return (
+    <>
+      <HeadUpDisplay score={score} questionNumber={questionNumber} />
+      <Question
+        currentQuestion={currentQuestion}
+        changeQuestion={changeQuestion}
+      />{" "}
+    </>
+  );
+};
 
 export default Quiz;

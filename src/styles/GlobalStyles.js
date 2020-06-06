@@ -2,8 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
     :root {
+        --bg-color : #1f253d;
         --primary-color : #F5A6C4;
-        --dark-color : #282C35;
+        --dark-color : #394264;
         --danger-color : HSL(356, 100%, 50%);
         --success-color : #28a745;
         --light-color : #fafafa;
@@ -23,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
         font-family: "Inter", sans-serif;       
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background : var(--dark-color);
+        background : var(--bg-color);
     }
 
 

@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <h1>Quiz App</h1>
         <LinkButton to="/quiz">Start Game</LinkButton>
-        <LinkButton to="/high-scores">High Scores</LinkButton>
+        <LinkButton to="/high-scores">Check High Scores</LinkButton>
     </>
   );
 };

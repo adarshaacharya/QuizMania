@@ -27,7 +27,7 @@ const SaveScoreForm = ({ score, scoreSaved }) => {
     <>
       <ScoreContainer>
         <h1>Score : {score} </h1>
-        <StyledForm onSubmit={saveHighScore}>
+        <StyledForm onSubmit={saveHighScore} autoComplete="off">
           <StyledInput
             type="text"
             name="username"
@@ -37,7 +37,7 @@ const SaveScoreForm = ({ score, scoreSaved }) => {
             onChange={setUserName}
             required
           />
-          <SubmitButton type="submit" disabled={!userName}>
+          <SubmitButton type="submit" >
             Submit
           </SubmitButton>
         </StyledForm>
@@ -50,7 +50,7 @@ const SaveScoreForm = ({ score, scoreSaved }) => {
 export default SaveScoreForm;
 
 const ScoreContainer = styled(Container)`
-  background: var(--grey-color);
+  background: var(--dark-color);
   max-height: 65vh;
   border-radius: 10px;
   border-top: 5px solid var(--primary-color);
@@ -58,7 +58,9 @@ const ScoreContainer = styled(Container)`
 `;
 
 const SubmitButton = styled(Button)`
-  padding: 1.5rem 4rem;
+  padding: 1.1rem 2.8rem;
+  font-weight: 700;
+  border-radius : 3px;
 `;
 
 const StyledForm = styled.form`
@@ -71,10 +73,22 @@ const StyledForm = styled.form`
 
 const StyledInput = styled.input`
   margin-bottom: 1rem;
-  width: 30rem;
+  width: 260px;
+  height: 50px;
   padding: 1.5rem;
   font-size: 1.8rem;
-  border: none;
+  border: solid 1px #1f253d;
+  background: #50597b;
+  color : var(--light-color);
   margin-bottom: 3rem;
   border-radius: 6px;
+  padding-left: 45px;
+  
+  &::placeholder {
+    color: var(--light-color);
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid var(--primary-color);
+  }
 `;
