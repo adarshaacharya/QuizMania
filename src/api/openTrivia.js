@@ -2,7 +2,7 @@ import Axios from "axios";
 
 // create instance of axios
 export default (
-  amount = 10,
+  amount = 20,
   category = 18,
   difficulty = "easy",
   type = "multiple"
